@@ -6,7 +6,6 @@ class TaskController extends Controller
 {
 	public function index()
 	{
-		auth()->logout();
-		return 'welcome';
+		return view('dashboard');
 	}
 }
