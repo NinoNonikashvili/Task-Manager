@@ -13,7 +13,7 @@ class LoginController extends Controller
 		return view('login');
 	}
 
-	public function login(LoginUserRequest $request): RedirectResponse
+	public function login(LoginUserRequest $request, $lang): RedirectResponse
 	{
 		$validated = $request->validated();
 

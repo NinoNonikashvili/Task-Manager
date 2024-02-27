@@ -8,7 +8,7 @@
         <title>Task Manager</title>
 
     </head>
-    <body class="p-10">
+    <body class="p-10 h-screen">
         {{ $slot}}
     </body>
 
