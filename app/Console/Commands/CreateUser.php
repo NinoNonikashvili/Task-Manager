@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Validator;
 
 class CreateUser extends Command
 {
@@ -12,7 +13,7 @@ class CreateUser extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'create-user {data*}';
+	protected $signature = 'task-manager:create-user';
 
 	/**
 	 * The console command description.
@@ -24,10 +25,26 @@ class CreateUser extends Command
 	/**
 	 * Execute the console command.
 	 */
-	public function handle()
+	public function handle(): void
 	{
-		$data = $this->argument('data');
+		$email = $this->ask('Type email: (email is required to create user) ');
+		$password = $this->secret('Type password: (min 4 chars');
+		$data = [
+			'email'    => $email ?? '',
+			'password' => $password ?? '',
+		];
+		$validator = Validator::make(
+			$data,
+			[
+				'email'   => 'required|email|unique:users,email',
+				'password'=> 'required|min:4',
+			]
+		);
 
-		User::create(['email'=> $data[0], 'password'=>$data[1]]);
+		$this->line($validator->validated());
+
+		if (User::create($validator->validated())) {
+			$this->line('user created successfully!');
+		}
 	}
 }

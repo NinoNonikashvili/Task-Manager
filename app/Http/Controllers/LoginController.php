@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginUserRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 
 class LoginController extends Controller
@@ -15,22 +13,9 @@ class LoginController extends Controller
 		return view('login');
 	}
 
-	public function login(Request $request): RedirectResponse
+	public function login(LoginUserRequest $request): RedirectResponse
 	{
-		$validated = $request->validate(
-			[
-				'email'   => 'required|email',
-				'password'=> 'required|min:4',
-			]
-		);
-
-		$validator = Validator::make($request->all(), [
-			'email' => 'exists:users,email',
-		]);
-
-		if ($validator->fails()) {
-			Artisan::call('create-user', ['data'=> [$validated['email'], $validated['password']]]);
-		}
+		$validated = $request->validated();
 
 		if (auth()->attempt($validated)) {
 			return redirect('/')->with('success', 'successfully signed in!');
