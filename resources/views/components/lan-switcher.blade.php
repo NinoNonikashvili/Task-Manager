@@ -1,6 +1,6 @@
 
 @props(['justify'])
-<div class="self-end flex {{$justify}}">
+<div class="self-end flex {{$justify?? ''}}">
     <div class="flex items-center gap-1 ">
         <a href="{{route('switch-lang', ['lang'=>'en'])}}"> 
               
