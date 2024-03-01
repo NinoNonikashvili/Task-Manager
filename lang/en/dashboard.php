@@ -13,8 +13,8 @@ return [
 	'created_at'	   =>'Created at',
 	'due_date'		   =>'Due Date',
 	'actions'		   =>'Actions',
-	'delete'		   =>'delete',
-	'edit'		       =>'edit',
-	'show'			   =>'show'
+	'delete'		   =>'Delete',
+	'edit'		       =>'Edit',
+	'show'			   =>'Show'
 
 ];
