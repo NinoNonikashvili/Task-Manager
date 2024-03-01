@@ -25,6 +25,7 @@ Route::controller(TaskController::class)->group(function () {
 		Route::get('/edit', 'edit')->name('edit-task');
 		Route::post('/update', 'update')->name('update-task');
 		Route::post('/destroy', 'destroy')->name('destroy-task');
+		Route::post('/destroy-old', 'destroyOld')->name('destroy-old-tasks');
 	});
 });
 
@@ -33,9 +34,6 @@ Route::post('login', [LoginController::class, 'login'])->middleware('guest')->na
 
 Route::get('switch-lang/{lang}', [LanguageController::class, 'switchLang'])->name('switch-lang');
 
-Route::get(
-	'profile',
-	function () {
-		return 'hello profile';
-	}
-)->middleware('auth')->name('profile');
+Route::get('profile', function () {
+	return 'hello profile';
+})->middleware('auth')->name('profile');
