@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class TaskController extends Controller
 {
@@ -11,7 +12,9 @@ class TaskController extends Controller
 	{
 		$column = $request['column'] ?? 'created_at';
 		$sort = $request['sort'] ?? 'desc';
-		return view('dashboard', ['tasks' => $tasks::orderBy($column, $sort)->paginate(8)->appends(request()->query())]);
+		$due_tasks = $request['due_tasks'] ?? 'false';
+		$now = Carbon::now();
+		return view('dashboard', ['tasks' => $tasks::orderBy($column, $sort)->whereDate('due_date', '<', $now)->paginate(8)->appends(request()->query())]);
 	}
 
 	public function show(Task $task)

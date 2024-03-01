@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TaskController::class, 'index'])->middleware('auth');
+Route::get('/', [TaskController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::controller(TaskController::class)->group(function () {
 	Route::middleware(['auth'])->group(function () {
 		Route::get('/tasks/{task}', 'show')->name('show-single-task');
@@ -32,3 +32,10 @@ Route::get('login', [LoginController::class, 'index'])->middleware('guest')->nam
 Route::post('login', [LoginController::class, 'login'])->middleware('guest')->name('login');
 
 Route::get('switch-lang/{lang}', [LanguageController::class, 'switchLang'])->name('switch-lang');
+
+Route::get(
+	'profile',
+	function () {
+		return 'hello profile';
+	}
+)->middleware('auth')->name('profile');
