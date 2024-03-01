@@ -1,0 +1,63 @@
+<x-layout>
+    
+    <main class="flex gap-9 h-full">
+
+        <x-admin-section />
+        <section class="grow mt-24 flex flex-col">
+            <header class="flex justify-between items-end">
+                <h1 class="ml-10 text-3xl font-bold leading-4  text-gray-900">{{__('dashboard.your_tasks')}}</h1>
+                <div class="flex gap-4 align-center">
+                <button class="px-6 py-4 text-base font-bold leading-4  text-blue-500 bg-white border border-blue-500 rounded-xl">
+                    {{__('dashboard.delete_old_tasks')}}
+                </button>
+                <button class="px-6 py-4 text-base font-bold leading-4  text-white bg-blue-500 rounded-xl flex gap-2 items-center">
+                    <x-icons.add-task />
+                    {{__('dashboard.add_task')}}
+                </button>
+                </div>
+            </header>
+            <div class="grow px-4 mt-4 h-2/3">
+                <!-- table start -->
+                @if(count($tasks)) 
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead >
+                        <tr>
+                            <th scope="col" class="pl-6 py-8 max-w-[18rem] overflow-hidden whitespace-nowrap text-left text-lg font-medium text-black">{{__('dashboard.task_name')}}</th>
+                            <th scope="col" class="pl-6 py-8 max-w-[21rem] overflow-hidden whitespace-nowrap text-left text-lg font-medium text-black">{{__('dashboard.description')}}</th>
+                            <th scope="col" class="pl-6 py-8 max-w-[8rem] overflow-hidden whitespace-nowrap">
+                                <div class="flex gap-1">
+                                    <span class="text-left text-lg font-medium text-black">{{__('dashboard.created_at')}}</span>
+                                    <x-date-filter />
+                                </div>
+                                
+                            </th>
+                            <th scope="col" class="pl-6 py-8 max-w-[8rem] overflow-hidden whitespace-nowrap">
+                                <div class="flex gap-1">
+                                    <span class="text-left text-lg font-medium text-black">{{__('dashboard.due_date')}}</span>
+                                    <x-date-filter />
+                                </div>   
+                                
+                            </th>
+                            <th scope="col" class="pl-6 py-8 max-w-[15rem] overflow-hidden whitespace-nowrap text-left text-lg font-medium text-black">{{__('dashboard.actions')}}</th>
+                        </tr>
+                    </thead>
+                   
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach($tasks as $task)
+                        <x-table-data-row :task="$task"/>
+
+                        @endforeach
+                    </tbody>
+                    
+
+                   
+                </table>
+                {{$tasks->onEachSide(1)->links()}}
+                @endif
+
+                <!-- table end -->
+            </div>
+            <x-lan-switcher  />
+        </section>
+    </main>
+</x-layout>

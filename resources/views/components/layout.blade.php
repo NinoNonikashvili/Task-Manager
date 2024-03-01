@@ -8,8 +8,8 @@
         <title>Task Manager</title>
 
     </head>
-    <body>
-        <h1 class="text-3xl font-bold underline text-red-200">hello</h1>
+    <body class="p-10 h-screen">
+        {{ $slot}}
     </body>
 
 </html>
