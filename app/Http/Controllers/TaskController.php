@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-	public function index(Task $task)
+	public function index(Task $tasks, Request $request)
 	{
-		return view('dashboard', ['tasks' => $task::latest()->paginate(8)]);
+		$column = $request['column'] ?? 'created_at';
+		$sort = $request['sort'] ?? 'desc';
+		return view('dashboard', ['tasks' => $tasks::orderBy($column, $sort)->paginate(8)->appends(request()->query())]);
 	}
 
 	public function show(Task $task)
