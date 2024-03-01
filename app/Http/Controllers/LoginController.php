@@ -18,9 +18,15 @@ class LoginController extends Controller
 		$validated = $request->validated();
 
 		if (auth()->attempt($validated)) {
-			return redirect('/')->with('success', 'successfully signed in!');
+			return redirect(route('dashboard'))->with('success', 'successfully signed in!');
 		}
 
 		return back()->withErrors(['email'=> 'your credentials could not be verified']);
+	}
+
+	public function logout(): RedirectResponse
+	{
+		auth()->logout();
+		return redirect(route('login.show'));
 	}
 }
