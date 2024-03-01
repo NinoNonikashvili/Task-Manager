@@ -22,6 +22,7 @@ class TaskFactory extends Factory
 			'name'        => $this->faker->sentence(),
 			'description' => $this->faker->paragraph(),
 			'due_date'    => $this->faker->date(),
+			'created_at'  => $this->faker->date(),
 		];
 	}
 }

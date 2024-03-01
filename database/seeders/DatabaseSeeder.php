@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run(): void
 	{
+		Task::truncate();
+
 		Task::factory(10)->create([
 			'user_id' => User::first(),
 		]);

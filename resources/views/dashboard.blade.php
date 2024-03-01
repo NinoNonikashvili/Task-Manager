@@ -1,5 +1,5 @@
 <x-layout>
-    
+   
     <main class="flex gap-9 h-full">
 
         <x-admin-section />
@@ -27,14 +27,14 @@
                             <th scope="col" class="pl-6 py-8 max-w-[8rem] overflow-hidden whitespace-nowrap">
                                 <div class="flex gap-1">
                                     <span class="text-left text-lg font-medium text-black">{{__('dashboard.created_at')}}</span>
-                                    <x-date-filter />
+                                    <x-date-filter column="created_at" />
                                 </div>
                                 
                             </th>
                             <th scope="col" class="pl-6 py-8 max-w-[8rem] overflow-hidden whitespace-nowrap">
                                 <div class="flex gap-1">
                                     <span class="text-left text-lg font-medium text-black">{{__('dashboard.due_date')}}</span>
-                                    <x-date-filter />
+                                    <x-date-filter column="due_date" />
                                 </div>   
                                 
                             </th>
@@ -52,7 +52,7 @@
 
                    
                 </table>
-                {{$tasks->onEachSide(1)->links()}}
+                {{$tasks->links()}}
                 @endif
 
                 <!-- table end -->
