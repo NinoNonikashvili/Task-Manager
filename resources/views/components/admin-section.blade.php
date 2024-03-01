@@ -12,13 +12,19 @@
             </a>
         </li>
         <li>
-            <a href="{{route('profile')}}">
+            <a href="{{route('profile.show')}}">
                 <x-icon-text icon='icons.profile' text='dashboard.profile' />
             </a>
         </li>
     </ul>
     <div class="mt-auto">
-        <x-icon-text icon='icons.logout' text='dashboard.logout' />
+        <form action="{{route('logout')}}" method="post">
+            @csrf
+            <button type="submit">
+                <x-icon-text icon='icons.logout' text='dashboard.logout' />
+            </button>
+        </form>
+            
     </div>
     
 

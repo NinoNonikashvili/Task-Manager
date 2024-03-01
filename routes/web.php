@@ -19,21 +19,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [TaskController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::controller(TaskController::class)->group(function () {
 	Route::middleware(['auth'])->group(function () {
-		Route::get('/tasks/{task}', 'show')->name('show-single-task');
-		Route::get('/create', 'create');
-		Route::post('/store', 'store')->name('store-task');
-		Route::get('/edit', 'edit')->name('edit-task');
-		Route::post('/update', 'update')->name('update-task');
-		Route::post('/destroy', 'destroy')->name('destroy-task');
-		Route::post('/destroy-old', 'destroyOld')->name('destroy-old-tasks');
+		Route::get('/tasks/{task}', 'show')->name('task.show');
+		Route::get('/create', 'create')->name('task.create');
+		Route::post('/store', 'store')->name('task.store');
+		Route::get('/edit', 'edit')->name('task.edit');
+		Route::post('/update', 'update')->name('task.update');
+		Route::post('/destroy', 'destroy')->name('task.destroy');
+		Route::post('/destroy-old', 'destroyOld')->name('task.destroy_all');
 	});
 });
 
-Route::get('login', [LoginController::class, 'index'])->middleware('guest')->name('login');
-Route::post('login', [LoginController::class, 'login'])->middleware('guest')->name('login');
+Route::get('login', [LoginController::class, 'index'])->middleware('guest')->name('login.show');
+Route::post('login', [LoginController::class, 'login'])->middleware('guest')->name('login.auth');
+Route::post('logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 
-Route::get('switch-lang/{lang}', [LanguageController::class, 'switchLang'])->name('switch-lang');
+Route::get('switch-lang/{lang}', [LanguageController::class, 'switchLang'])->name('switch_lang');
 
 Route::get('profile', function () {
 	return 'hello profile';
-})->middleware('auth')->name('profile');
+})->middleware('auth')->name('profile.show');
