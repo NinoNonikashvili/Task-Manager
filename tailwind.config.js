@@ -7,14 +7,16 @@ export default {
     './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
 
   ],
-  theme: {
-    extend: {
-      spacing:{
-          '166': '10.5rem',
-        
+ 
+    theme: {
+      extend: {
+        spacing: {
+          '88': '88%',
+  
+        }
       }
     },
-  },
+  
   plugins: [],
 }
 

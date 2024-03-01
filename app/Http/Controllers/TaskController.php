@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
+use App\Http\Requests\CreateUpdateTaskRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
@@ -22,13 +23,30 @@ class TaskController extends Controller
 
 	public function show(Task $task)
 	{
-		var_dump($task);
-		return 'hello show';
+		return view('tasks.show', ['task' => $task]);
+	}
+
+	public function edit(Task $task)
+	{
+		return view('tasks.edit', ['task' => $task]);
+	}
+
+	public function update(CreateUpdateTaskRequest $request)
+	{
+	}
+
+	public function destroy(Request $request)
+	{
+		var_dump($request['id']);
 	}
 
 	public function create()
 	{
 		return 'hello create';
+	}
+
+	public function store()
+	{
 	}
 
 	public function destroyOld(Request $request): RedirectResponse
