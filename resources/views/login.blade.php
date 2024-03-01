@@ -1,7 +1,7 @@
 <x-layout>
 
     <main class="grid grid-cols-2 rounded-xl overflow-hidden h-full">
-        <img src="{{ asset('images/cover.png') }}" class="col-span-1 h-full object-cover">
+        <img src="{{ asset('images/cover.png') }}" class="col-span-1 h-full object-cover overflow-hidden">
         <section class="col-span-1 grid items-center ">
             <div class="w-96 mx-auto">
                 <div class="flex justify-between items-center w-full mb-14">
