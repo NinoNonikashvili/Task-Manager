@@ -1,3 +1,4 @@
+@props(['tasks'])
 <x-layout>
    
     <main class="flex gap-9 h-full">
@@ -7,12 +8,13 @@
             <header class="flex justify-between items-end">
                 <h1 class="ml-10 text-3xl font-bold leading-4  text-gray-900">{{__('dashboard.your_tasks')}}</h1>
                 <div class="flex gap-4 align-center">
-                <form action="{{route('task.destroy_all')}}" method="post" novalidate>
-                    @csrf
-                    <x-btn-outline text="{{__('dashboard.delete_old_tasks')}}" icon="x-icons.add-task " type='submit' height="h-full"/>
-                </form>
-                
-                <x-btn-filled text="{{__('dashboard.add_task')}}" icon="x-icons.add-task " />
+                    <form action="{{route('task.destroy_all')}}" method="post" novalidate>
+                        @csrf
+                        <x-btn-outline text="{{__('dashboard.delete_old_tasks')}}"  type='submit' height="h-full"/>
+                    </form>
+                    <a href="{{route('task.create')}}">
+                        <x-btn-filled text="{{__('dashboard.add_task')}}" icon="icons.add-task " />
+                    </a>
                 </div>
             </header>
             <div class="grow px-4 mt-4 h-2/3">
