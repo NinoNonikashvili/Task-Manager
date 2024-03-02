@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -62,11 +63,28 @@ class TaskController extends Controller
 
 	public function create()
 	{
-		return 'hello create';
+		return view('tasks.create');
 	}
 
-	public function store()
+	public function store(CreateTaskRequest $request): RedirectResponse
 	{
+		$data = $request->validated();
+
+		$date = Carbon::createFromFormat('d/m/y', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
+
+		$name = ['en' => $data['title_en'], 'ka'=> $data['title_ka']];
+		$description = ['en' => $data['description_en'], 'ka' => $data['description_ka']];
+
+		$task = Task::create([
+			'user_id'     => auth()->id(),
+			'name'        => $name,
+			'description' => $description,
+			'due_date'    => $date,
+		]);
+
+		$task->save();
+
+		return redirect(route('dashboard'));
 	}
 
 	public function destroyOld(Request $request): RedirectResponse

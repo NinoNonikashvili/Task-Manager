@@ -32,7 +32,8 @@
                    
                 </form>
             </div>
-            <x-lan-switcher  />
+            
         </section>
+        <x-lan-switcher  />
     </main>
 </x-layout>

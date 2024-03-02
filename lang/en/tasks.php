@@ -13,4 +13,5 @@ return [
 	'task_name_ka'        => 'Task name in Georgian',
 	'task_description_en' => 'Task description in English',
 	'task_description_ka' => 'Task description in Georgian',
+	'create_task'         => 'Create task',
 ];
