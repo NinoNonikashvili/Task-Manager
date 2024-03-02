@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUpdateTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -28,16 +28,18 @@ class TaskController extends Controller
 
 	public function edit(Task $task)
 	{
+		var_dump($task);
 		return view('tasks.edit', ['task' => $task]);
 	}
 
-	public function update(CreateUpdateTaskRequest $request)
+	public function update(UpdateTaskRequest $request)
 	{
 	}
 
-	public function destroy(Request $request)
+	public function destroy(Request $request): RedirectResponse
 	{
-		var_dump($request['id']);
+		Task::where('id', '=', $request['id'])->delete();
+		return redirect()->back();
 	}
 
 	public function create()

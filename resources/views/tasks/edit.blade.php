@@ -12,19 +12,18 @@
             </header>
             <div class="w-115 mt-4 mx-auto flex flex-col items-center">
                 <h1 class="mb-8 text-3xl font-bold leading-4 text-gray-900">{{__('tasks.edit_task_h1')}}</h1>
-                <form action="route('/update')" method="post" novalidate class="w-full">
+                <form action="{{route('task.update')}}" method="post" novalidate class="w-full">
                     @csrf
-                    <x-form.input type="text" name="title_en" placeholder="Task" />
-                    <x-form.input type="text" name="title_ka" placeholder="დავალება" />
-                    <x-form.textarea name="description" placeholder="Description" />
-                    <x-form.textarea name="description" placeholder="აღწერა" />
-                    <x-form.input type="date" name="due_date" placeholder="{{__('tasks.due_date')}}" />
+                    <x-form.input type="text" name="title_en" placeholder="" label="{{__('tasks.task_name_en')}}" />
+                    <x-form.input type="text" name="title_ka" placeholder=""  label="{{__('tasks.task_name_ka')}}"/>
                     
-                   
+                    <x-form.textarea name="description_en" placeholder=""  label="{{__('tasks.task_description_en')}}" />
+                    <x-form.textarea name="description_ka" placeholder=""  label="{{__('tasks.task_description_ka')}}" />
+                    
+                    <x-form.input type="text" name="due_date" placeholder="DD/MM/YY" label="{{__('tasks.due_date')}}"/>
                  
-                    
                     <div class="mb-6 w-full">
-                        <button class="w-full px-6 py-4 rounded-xl bg-blue-500 text-base font-bold leading-4 text-white focus:outline-none uppercase" type="submit">
+                        <button type="submit" class="w-full px-6 py-4 rounded-xl bg-blue-500 text-base font-bold leading-4 text-white focus:outline-none uppercase" type="submit">
                         {{__('tasks.edit_changes')}}
                         </button>
                     </div>

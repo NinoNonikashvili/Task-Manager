@@ -1,5 +1,30 @@
 /** @type {import('tailwindcss').Config} */
+const { colors: defaultColors } = require('tailwindcss/defaultTheme')
+
+const colors = {
+  ...defaultColors,
+  ...{
+    "gray": {
+      '101': '#E0E3E7',
+      '102': '#D9D9D9',
+      '103': '#F6F8FA',
+      '104': '#959DA5',
+      '105': '#6A7S7D',
+      '106': '#586069',
+      'default': '#2F3639'
+    },
+    "red": {
+      'error': 'E91818'
+    },
+    "blue": {
+      '104': '499AF9'
+    },
+  },
+}
+
+
 export default {
+  
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
@@ -12,9 +37,28 @@ export default {
       extend: {
         spacing: {
           '88': '88%',
-          '115': '29rem'
-        }
+          '115': '29rem',
+          '19': '4.875rem'
+        },
+      
+      colors: {
+        gray: {
+          '101': '#E0E3E7',
+          '102': '#D9D9D9',
+          '103': '#F6F8FA',
+          '104': '#959DA5',
+          '105': '#6A737D',
+          '106': '#586069',
+          'default': '#2F3639'
+        },
+        red: {
+          'error': '#E91818'
+        },
+        blue: {
+          '104': '#499AF9'
+        },
       }
+    }
     },
   
   plugins: [],

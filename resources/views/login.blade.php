@@ -7,7 +7,7 @@
                 <div class="flex justify-between items-center w-full mb-14">
                     <div class="flex flex-col gap-4 ">
                         <h1 class="text-3xl font-bold  leading-4 text-gray-900">{{__('login.welcome')}}</h1>
-                        <span class=" text-base font-normal leading-4 text-gray-600"> {{__('login.enter_details')}}</span>
+                        <span class=" text-base font-normal leading-4 text-gray-105"> {{__('login.enter_details')}}</span>
                     </div>
                     
                     
@@ -15,32 +15,15 @@
                 </div>
                 <form action="{{route('login.auth')}}" method="post" novalidate>
                     @csrf
-                    <div class="mb-6 w-full">
-                        <input class="w-full px-6 py-4 rounded-xl bg-gray-100 focus:outline-none  focus:ring-1 focus:ring-blue-500 @error('email') ring-1 ring-red-400 @enderror " 
-                                type="email" 
-                                name="email" 
-                                placeholder="{{__('login.write_email')}}"
-                                value="{{old('email')}} ">
-                    @error('email')
-                        <div class="text-xs font-normal text-red-500 mt-2">{{ $message }}</div>
-                    @enderror
-                    </div>
-                    
-                    <div class="mb-6 w-full relative">
-                        <input class="w-full px-6 py-4 rounded-xl bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500 @error('email') ring-1 ring-red-400 @enderror" 
-                                type="password" 
-                                name="password" 
-                                placeholder="{{__('login.write_password')}}" >
-                        <x-icons.eye class='absolute top-4 right-4'/>
-                    @error('password')
-                        <div class="text-xs font-normal text-red-500 mt-2">{{ $message }}</div>
-                    @enderror
-                    </div>
+                 
+                    <x-form.input type="email" name="email" placeholder="{{__('login.write_email')}}"  label="{{__('login.email')}}"/>
+                    <x-form.password-input name="password" placeholder="{{__('login.write_password')}}" label="{{__('login.password')}}"/>
                     
                     <div class="mb-6 w-full">
-                        <button class="w-full px-6 py-4 rounded-xl bg-blue-500 text-base font-bold leading-4 text-white focus:outline-none">
-                        {{__('login.login')}}
-                        </button>
+                        <!-- <button class="w-full px-6 py-4 rounded-xl bg-blue-500 text-base font-bold leading-4 text-white focus:outline-none">
+                        
+                        </button> -->
+                        <x-btn-filled text="{{__('login.login')}}" type="submit"/>
                     </div>
                 </form>
             </div>         
