@@ -3,6 +3,7 @@
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,5 @@ Route::post('logout', [LoginController::class, 'logout'])->middleware('auth')->n
 
 Route::get('switch-lang/{lang}', [LanguageController::class, 'switchLang'])->name('switch_lang');
 
-Route::get('profile', function () {
-	return 'hello profile';
-})->middleware('auth')->name('profile.show');
+Route::get('profile-edit/{user}', [UserController::class, 'edit'])->middleware('auth')->name('profile.edit');
+Route::patch('profile-update/{user}', [UserController::class, 'update'])->middleware('auth')->name('proile.update');
