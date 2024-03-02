@@ -1,4 +1,4 @@
-@props(['type', 'name', 'placeholder', 'label'])
+@props(['type', 'name', 'placeholder', 'label', 'value'])
 
 
 
@@ -12,6 +12,7 @@
          name="{{$name}}" 
          type="{{$type}}"
          placeholder="{{$placeholder}}"
+         value ="{{isset($value)? $value: ''}}"
 
          class="peer w-full h-full pt-4 overflow-hidden text-base font-normal leading-4 text-gray-default  bg-gray-103  focus:outline-none placeholder-transparent focus:placeholder-gray-104" 
           />

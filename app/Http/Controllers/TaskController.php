@@ -28,8 +28,15 @@ class TaskController extends Controller
 
 	public function edit(Task $task)
 	{
-		var_dump($task);
-		return view('tasks.edit', ['task' => $task]);
+		$data = [
+			'id'             => $task->id,
+			'title_en'       => $task->getTranslation('name', 'en'),
+			'title_ka'       => $task->getTranslation('name', 'ka'),
+			'description_en' => $task->getTranslation('description', 'ka'),
+			'description_ka' => $task->getTranslation('description', 'ka'),
+			'due_date'       => Carbon::parse($task->due_date)->format('d/m/y'),
+		];
+		return view('tasks.edit', ['task' => $data]);
 	}
 
 	public function update(UpdateTaskRequest $request)

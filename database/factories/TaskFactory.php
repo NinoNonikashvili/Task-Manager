@@ -19,8 +19,8 @@ class TaskFactory extends Factory
 	{
 		return [
 			'user_id'     => User::first(),
-			'name'        => $this->faker->sentence(),
-			'description' => $this->faker->paragraph(),
+			'name'        => ['en' => $this->faker->sentence(), 'ka' => $this->faker->sentence()],
+			'description' => ['en' => $this->faker->paragraph(), 'ka' => $this->faker->paragraph()],
 			'due_date'    => $this->faker->date(),
 			'created_at'  => $this->faker->date(),
 		];
