@@ -23,7 +23,7 @@ Route::controller(TaskController::class)->group(function () {
 		Route::get('/create', 'create')->name('task.create');
 		Route::post('/store', 'store')->name('task.store');
 		Route::get('/edit/{task}', 'edit')->name('task.edit');
-		Route::post('/update', 'update')->name('task.update');
+		Route::patch('/update/{task}', 'update')->name('task.update');
 		Route::post('/destroy', 'destroy')->name('task.destroy');
 		Route::post('/destroy-old', 'destroyOld')->name('task.destroy_all');
 	});

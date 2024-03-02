@@ -12,8 +12,9 @@
             </header>
             <div class="w-115 mt-4 mx-auto flex flex-col items-center">
                 <h1 class="mb-8 text-3xl font-bold leading-4 text-gray-900">{{__('tasks.edit_task_h1')}}</h1>
-                <form action="{{route('task.update')}}" method="post" novalidate class="w-full">
+                <form action="/update/{{$task['id']}}" method="post" novalidate class="w-full">
                     @csrf
+                    @method('patch')
                     <x-form.input type="text" name="title_en" placeholder="" label="{{__('tasks.task_name_en')}}"  value="{{old('title_en')??$task['title_en']}}"/>
                     <x-form.input type="text" name="title_ka" placeholder=""  label="{{__('tasks.task_name_ka')}}" value="{{old('title_ka')??$task['title_ka']}}"/>
                     

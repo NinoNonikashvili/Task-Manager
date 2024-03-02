@@ -11,7 +11,7 @@ class UpdateTaskRequest extends FormRequest
 	 */
 	public function authorize(): bool
 	{
-		return false;
+		return auth()->check();
 	}
 
 	/**
@@ -22,6 +22,11 @@ class UpdateTaskRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
+			'title_en'       => 'required|min:3|regex:/^[a-zA-Z\s]+$/',
+			'title_ka'       => 'required|min:3|regex:/^[ა-ჰ\s]+$/',
+			'description_en' => 'required|min:3|regex:/^[a-zA-Z\s]+$/',
+			'description_ka' => 'required|min:3|regex:/^[ა-ჰ\s]+$/',
+			'due_date'       => 'required|date_format:d/m/y',
 		];
 	}
 }

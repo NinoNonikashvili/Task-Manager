@@ -39,8 +39,19 @@ class TaskController extends Controller
 		return view('tasks.edit', ['task' => $data]);
 	}
 
-	public function update(UpdateTaskRequest $request)
+	public function update(UpdateTaskRequest $request, Task $task): RedirectResponse
 	{
+		$data = $request->validated();
+
+		$date = Carbon::createFromFormat('d/m/y', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
+
+		$title = ['en' => $data['title_en'], 'ka'=> $data['title_ka']];
+		$description = ['en' => $data['description_en'], 'ka' => $data['description_ka']];
+		$task->replaceTranslations('name', $title);
+		$task->replaceTranslations('description', $description);
+
+		$task->update(['due_date'=>$date]);
+		return redirect(route('dashboard'));
 	}
 
 	public function destroy(Request $request): RedirectResponse
