@@ -8,7 +8,7 @@ class LanguageController extends Controller
 {
 	public function switchLang($locale): RedirectResponse
 	{
-		app()->setLocale($locale);
+		// app()->setLocale($locale);
 		return redirect()->back()->with('locale', $locale);
 	}
 }

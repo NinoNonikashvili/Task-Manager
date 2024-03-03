@@ -12,7 +12,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route('profile.edit)}}">
+            <a href="{{route('profile.edit')}}">
                 <x-icon-text icon='icons.profile' text='dashboard.profile' />
             </a>
         </li>

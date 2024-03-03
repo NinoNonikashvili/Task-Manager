@@ -33,7 +33,7 @@ class TaskController extends Controller
 			'id'             => $task->id,
 			'title_en'       => $task->getTranslation('name', 'en'),
 			'title_ka'       => $task->getTranslation('name', 'ka'),
-			'description_en' => $task->getTranslation('description', 'ka'),
+			'description_en' => $task->getTranslation('description', 'en'),
 			'description_ka' => $task->getTranslation('description', 'ka'),
 			'due_date'       => Carbon::parse($task->due_date)->format('d/m/y'),
 		];
@@ -57,7 +57,7 @@ class TaskController extends Controller
 
 	public function destroy(Request $request): RedirectResponse
 	{
-		Task::where('id', '=', $request['id'])->delete();
+		Task::find($request['id'])->delete();
 		return redirect()->back();
 	}
 
@@ -72,15 +72,10 @@ class TaskController extends Controller
 
 		$date = Carbon::createFromFormat('d/m/y', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
 
-		$name = ['en' => $data['title_en'], 'ka'=> $data['title_ka']];
-		$description = ['en' => $data['description_en'], 'ka' => $data['description_ka']];
+		$data['due_date'] = $date;
+		$data['user_id'] = auth()->id();
 
-		$task = Task::create([
-			'user_id'     => auth()->id(),
-			'name'        => $name,
-			'description' => $description,
-			'due_date'    => $date,
-		]);
+		$task = Task::create($data);
 
 		$task->save();
 
