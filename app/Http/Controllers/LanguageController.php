@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
 
 class LanguageController extends Controller
 {
 	public function switchLang($locale): RedirectResponse
 	{
-		// app()->setLocale($locale);
-		return redirect()->back()->with('locale', $locale);
+		Session::put('locale', $locale);
+		return redirect()->back();
 	}
 }

@@ -10,4 +10,5 @@ return [
 	'current_password'    => 'Current password',
 	'new_password'        => 'New password',
 	'retype_new_password' => 'Retype new password',
+	'change'              => 'Change',
 ];

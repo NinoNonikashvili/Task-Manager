@@ -38,7 +38,9 @@ export default {
         spacing: {
           '88': '88%',
           '115': '29rem',
-          '19': '4.875rem'
+          '19': '4.875rem',
+          '570' : '35rem',
+          '368' : '23rem'
         },
       
       colors: {

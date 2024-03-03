@@ -15,11 +15,11 @@
                 <form action="/update/{{$task['id']}}" method="post" novalidate class="w-full">
                     @csrf
                     @method('patch')
-                    <x-form.input type="text" name="name[en]" placeholder="" label="{{__('tasks.task_name_en')}}"  value="{{old('name[en]')??$task['name.en']}}"/>
-                    <x-form.input type="text" name="name[ka]" placeholder=""  label="{{__('tasks.task_name_ka')}}" value="{{old('name[ka]')??$task['name.ka']}}"/>
+                    <x-form.input type="text" name="name[en]" placeholder="" label="{{__('tasks.task_name_en')}}"  value="{{old('name.en')??$task['name.en']}}"/>
+                    <x-form.input type="text" name="name[ka]" placeholder=""  label="{{__('tasks.task_name_ka')}}" value="{{old('name.ka')??$task['name.ka']}}"/>
                     
-                    <x-form.textarea name="description[en]" placeholder=""  label="{{__('tasks.task_description_en')}}" value="{{old('description[en]')??$task['description.en']}}" />
-                    <x-form.textarea name="description[ka]" placeholder=""  label="{{__('tasks.task_description_ka')}}" value="{{old('description[ka]')??$task['description.ka']}}" />
+                    <x-form.textarea name="description[en]" placeholder=""  label="{{__('tasks.task_description_en')}}" value="{{old('description.en')??$task['description.en']}}" />
+                    <x-form.textarea name="description[ka]" placeholder=""  label="{{__('tasks.task_description_ka')}}" value="{{old('description.ka')??$task['description.ka']}}" />
                     
                     <x-form.input type="text" name="due_date" placeholder="DD/MM/YY" label="{{__('tasks.due_date')}}" value="{{old('due_date')??$task['due_date']}}"/>
                  
