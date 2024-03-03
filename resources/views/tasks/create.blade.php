@@ -10,7 +10,7 @@
                 <form action="{{route('task.store')}}" method="post" novalidate class="w-full">
                     @csrf
                     <x-form.input type="text" name="name[en]" placeholder="" label="{{__('tasks.task_name_en')}}"  value="{{old('name[en]')}}"/>
-                    <x-form.input type="text" name="name[ka]" placeholder=""  label="{{__('tasks.task_name_ka')}}" value="{{old('name[კა]')}}"/>
+                    <x-form.input type="text" name="name[ka]" placeholder=""  label="{{__('tasks.task_name_ka')}}" value="{{old('name[ka]')}}"/>
                     
                     <x-form.textarea name="description[en]" placeholder=""  label="{{__('tasks.task_description_en')}}" value="{{old('description[en]')}}" />
                     <x-form.textarea name="description[ka]" placeholder=""  label="{{__('tasks.task_description_ka')}}" value="{{old('description[ka]')}}" />

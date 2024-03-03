@@ -1,17 +1,18 @@
-@props([ 'name', 'placeholder', 'label'])
+@props([ 'name', 'placeholder', 'label', 'value'])
 
 
 <div
     x-data="{
         show : false
     }"
-    class="relative w-full h-19 mb-2 px-6 rounded-xl bg-gray-103  focus-within:ring-1 focus-within:ring-blue-104 @error($name) ring-1 ring-red-error @enderror">
+    class="relative w-full h-19 mb-8 px-6 rounded-xl bg-gray-103  focus-within:ring-1 focus-within:ring-blue-104 @error(trim(str_replace('[', '.', $name), ']')) ring-1 ring-red-error @enderror">
     
          <input 
          id="{{$name.'_id'}}"
          name="{{$name}}" 
          x-bind:type="show ? 'text' : 'password'"
          placeholder="{{$placeholder}}"
+         value="{{$value}}"
          class="peer w-full h-full pt-4 overflow-hidden text-base font-normal leading-4 text-gray-default  bg-gray-103  focus:outline-none  placeholder-transparent focus:placeholder-gray-104" 
           />
     <label 
@@ -29,9 +30,9 @@
             
             
         </div>
+        @error(trim(str_replace('[', '.', $name), ']'))
+            <div class="text-xs font-normal text-red-error mt-1">{{ $message }}</div>
+        @enderror
 </div>
 
 
-@error($name)
-    <div class="text-xs font-normal text-red-error mb-6">{{ $message }}</div>
-@enderror

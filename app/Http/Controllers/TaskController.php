@@ -31,10 +31,10 @@ class TaskController extends Controller
 	{
 		$data = [
 			'id'             => $task->id,
-			'title_en'       => $task->getTranslation('name', 'en'),
-			'title_ka'       => $task->getTranslation('name', 'ka'),
-			'description_en' => $task->getTranslation('description', 'en'),
-			'description_ka' => $task->getTranslation('description', 'ka'),
+			'name.en'        => $task->getTranslation('name', 'en'),
+			'name.ka'        => $task->getTranslation('name', 'ka'),
+			'description.en' => $task->getTranslation('description', 'en'),
+			'description.ka' => $task->getTranslation('description', 'ka'),
 			'due_date'       => Carbon::parse($task->due_date)->format('d/m/y'),
 		];
 		return view('tasks.edit', ['task' => $data]);
@@ -46,10 +46,8 @@ class TaskController extends Controller
 
 		$date = Carbon::createFromFormat('d/m/y', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
 
-		$title = ['en' => $data['title_en'], 'ka'=> $data['title_ka']];
-		$description = ['en' => $data['description_en'], 'ka' => $data['description_ka']];
-		$task->replaceTranslations('name', $title);
-		$task->replaceTranslations('description', $description);
+		$task->replaceTranslations('name', $data['name']);
+		$task->replaceTranslations('description', $data['description']);
 
 		$task->update(['due_date'=>$date]);
 		return redirect(route('dashboard'));
