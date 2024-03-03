@@ -3,6 +3,7 @@
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ Route::controller(TaskController::class)->group(function () {
 		Route::get('/create', 'create')->name('task.create');
 		Route::post('/store', 'store')->name('task.store');
 		Route::get('/edit/{task}', 'edit')->name('task.edit');
-		Route::post('/update', 'update')->name('task.update');
+		Route::patch('/update/{task}', 'update')->name('task.update');
 		Route::post('/destroy', 'destroy')->name('task.destroy');
 		Route::post('/destroy-old', 'destroyOld')->name('task.destroy_all');
 	});
@@ -35,6 +36,5 @@ Route::post('logout', [LoginController::class, 'logout'])->middleware('auth')->n
 
 Route::get('switch-lang/{lang}', [LanguageController::class, 'switchLang'])->name('switch_lang');
 
-Route::get('profile', function () {
-	return 'hello profile';
-})->middleware('auth')->name('profile.show');
+Route::get('profile-edit', [UserController::class, 'edit'])->middleware('auth')->name('profile.edit');
+Route::patch('profile-update', [UserController::class, 'update'])->middleware('auth')->name('proile.update');

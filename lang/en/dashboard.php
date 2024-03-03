@@ -3,7 +3,7 @@
 return [
 	'your_tasks'       => 'Your Tasks',
 	'delete_old_tasks' => 'Delete Old Tasks',
-	'add_task'         => 'Add Tasks',
+	'add_task'         => 'Add Task',
 	'my_tasks' 		   => 'My Tasks',
 	'due_tasks'        => 'Due Tasks',
 	'profile' 		   => 'Profile',

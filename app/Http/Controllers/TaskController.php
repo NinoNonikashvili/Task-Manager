@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUpdateTaskRequest;
+use App\Http\Requests\CreateTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -28,25 +29,55 @@ class TaskController extends Controller
 
 	public function edit(Task $task)
 	{
-		return view('tasks.edit', ['task' => $task]);
+		$data = [
+			'id'             => $task->id,
+			'name.en'        => $task->getTranslation('name', 'en'),
+			'name.ka'        => $task->getTranslation('name', 'ka'),
+			'description.en' => $task->getTranslation('description', 'en'),
+			'description.ka' => $task->getTranslation('description', 'ka'),
+			'due_date'       => Carbon::parse($task->due_date)->format('d/m/y'),
+		];
+		return view('tasks.edit', ['task' => $data]);
 	}
 
-	public function update(CreateUpdateTaskRequest $request)
+	public function update(UpdateTaskRequest $request, Task $task): RedirectResponse
 	{
+		$data = $request->validated();
+
+		$date = Carbon::createFromFormat('d/m/y', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
+
+		$task->replaceTranslations('name', $data['name']);
+		$task->replaceTranslations('description', $data['description']);
+
+		$task->update(['due_date'=>$date]);
+		return redirect(route('dashboard'));
 	}
 
-	public function destroy(Request $request)
+	public function destroy(Request $request): RedirectResponse
 	{
-		var_dump($request['id']);
+		Task::find($request['id'])->delete();
+		return redirect()->back();
 	}
 
 	public function create()
 	{
-		return 'hello create';
+		return view('tasks.create');
 	}
 
-	public function store()
+	public function store(CreateTaskRequest $request): RedirectResponse
 	{
+		$data = $request->validated();
+
+		$date = Carbon::createFromFormat('d/m/y', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
+
+		$data['due_date'] = $date;
+		$data['user_id'] = auth()->id();
+
+		$task = Task::create($data);
+
+		$task->save();
+
+		return redirect(route('dashboard'));
 	}
 
 	public function destroyOld(Request $request): RedirectResponse

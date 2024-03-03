@@ -1,4 +1,4 @@
-<section class="flex flex-col items-center p-6 bg-gray-200 rounded-4 h-full w-[10.5rem] rounded-xl">
+<section class="flex flex-col items-center p-6 bg-gray-200 rounded-4 h-full w-[10.5rem] rounded-xl flex-shrink-0">
     <img src="{{asset('images/avatar.png')}}" alt="" class="mb-28 rounded-full w-16">
     <ul class="flex flex-col gap-7">
         <li>
@@ -12,7 +12,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route('profile.show')}}">
+            <a href="{{route('profile.edit')}}">
                 <x-icon-text icon='icons.profile' text='dashboard.profile' />
             </a>
         </li>
