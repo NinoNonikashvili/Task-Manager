@@ -1,8 +1,9 @@
+@props(['avatar'])
 <x-layout>
    
     <main class="flex gap-9 h-full">
 
-        <x-admin-section />
+    <x-admin-section :avatar="$avatar" />
         <section class="grow mt-24 flex flex-col px-52">
  
             <div class="w-115 mt-4 mx-auto flex flex-col items-center">

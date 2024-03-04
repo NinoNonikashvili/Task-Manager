@@ -11,20 +11,22 @@ class UserController extends Controller
 	public function edit()
 	{
 		$user = auth()->user();
-		return view('profile.edit', ['user' => $user]);
+		$files = glob(public_path('storage/avatar/avatar' . '.*'));
+		$path = explode('public', $files[0]);
+		$avatar = $files ? asset($path[1]) : asset('images/avatar.png');
+		return view('profile.edit', ['user' => $user, 'avatar'=>$avatar]);
 	}
 
 	public function update(UpdateUserRequest $request)
 	{
 		$user = User::find(auth()->id());
-		if (isset($request['avatar'])) {
-			Storage::deleteDirectory(public_path('storage/avatar'));
-
-			$user->avatar = $request->file('avatar')->store('avatar');
+		if (!empty($request['avatar'])) {
+			Storage::disk()->deleteDirectory('avatar');
+			$user->avatar = $request->file('avatar')->storeAs('avatar', 'avatar.' . $request->file('avatar')->extension());
 		}
-		if (isset($request['cover'])) {
-			Storage::deleteDirectory(public_path('storage/cover'));
-			$user->cover = $request->file('cover')->store('cover');
+		if (!empty($request['cover'])) {
+			Storage::disk()->deleteDirectory('cover');
+			$user->cover = $request->file('cover')->storeAs('cover', 'cover.' . $request->file('cover')->extension());
 		}
 
 		$user->password = bcrypt($request['new_password']);

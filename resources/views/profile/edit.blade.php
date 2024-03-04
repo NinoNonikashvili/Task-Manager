@@ -1,9 +1,9 @@
-@props(['user'])
+@props(['user', 'avatar'])
 <x-layout>
    
     <main class="flex gap-20 h-full">
 
-        <x-admin-section />
+    <x-admin-section :avatar="$avatar" />
 
         <section class="w-570 mt-14 ml-auto">
 
@@ -21,12 +21,9 @@
                     <div class="w-115">
                         <h3 class="mb-6 mt-16 flex justify-center uppercase text-base font-normal leading-4 text-gray-default">{{__('profile.change_photos')}}</h3>
                     </div>
-                    <div class="w-full">
-                        <input type="file" name="avatar">
-                        @error('avatar')
-                        <div>{{$message}}</div>
-                        @enderror
-                        <input type="file" name="cover">
+                    <div class="w-full mb-12">
+                        <x-form.input-image name="avatar" text="{{__('profile.upload_profile')}}" />
+                        <x-form.input-image name="cover" text="{{__('profile.upload_cover')}}" />
                     </div>
                     
                     

@@ -10,7 +10,11 @@ class LoginController extends Controller
 {
 	public function index(): View
 	{
-		return view('login');
+		$files = glob(public_path('storage/cover/cover' . '.*'));
+		$path = explode('public', $files[0]);
+		$image = $files ? asset($path[1]) : asset('images/cover.png');
+
+		return view('login', ['cover' => $image]);
 	}
 
 	public function login(LoginUserRequest $request): RedirectResponse

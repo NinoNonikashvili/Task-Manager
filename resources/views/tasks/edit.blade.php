@@ -3,7 +3,7 @@
    
     <main class="flex gap-9 h-full">
 
-        <x-admin-section />
+    <x-admin-section :avatar="$avatar" />
         <section class="grow mt-24 flex flex-col px-52">
             <header >   
                 <a href="/tasks/{{$task['id']}}">
