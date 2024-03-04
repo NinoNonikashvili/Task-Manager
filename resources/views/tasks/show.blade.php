@@ -4,7 +4,7 @@
    
     <main class="flex gap-9 h-full">
 
-        <x-admin-section />
+    <x-admin-section :avatar="$avatar" />
         <section class="grow mt-24 flex flex-col pl-20">
             <header class="flex justify-between items-end">
                 <h1 class="text-3xl font-bold leading-4  text-gray-900">{{$task->name}}</h1>

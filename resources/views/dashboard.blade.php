@@ -3,7 +3,7 @@
    
     <main class="flex gap-9 h-full">
 
-        <x-admin-section />
+        <x-admin-section :avatar="$avatar" />
         <section class="grow mt-24 flex flex-col">
             <header class="flex justify-between items-end">
                 <h1 class="ml-10 text-3xl font-bold leading-4  text-gray-900">{{__('dashboard.your_tasks')}}</h1>

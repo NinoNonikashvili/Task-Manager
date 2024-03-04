@@ -16,19 +16,30 @@ class TaskController extends Controller
 		$column = $request['column'] ?? 'created_at';
 		$sort = $request['sort'] ?? 'desc';
 		$now = Carbon::now();
+
+		$files = glob(public_path('storage/avatar/avatar' . '.*'));
+		$path = explode('public', $files[0]);
+		$avatar = $files ? asset($path[1]) : asset('images/avatar.png');
+
 		if ($request['due_tasks']) {
-			return view('dashboard', ['tasks' => $tasks::orderBy($column, $sort)->whereDate('due_date', '<', $now)->paginate(8)->appends(request()->query())]);
+			return view('dashboard', ['tasks' => $tasks::orderBy($column, $sort)->whereDate('due_date', '<', $now)->paginate(8)->appends(request()->query()), 'avatar' =>$avatar]);
 		}
-		return view('dashboard', ['tasks' => $tasks::orderBy($column, $sort)->paginate(8)->appends(request()->query())]);
+		return view('dashboard', ['tasks' => $tasks::orderBy($column, $sort)->paginate(8)->appends(request()->query()), 'avatar' =>$avatar]);
 	}
 
 	public function show(Task $task)
 	{
-		return view('tasks.show', ['task' => $task]);
+		$files = glob(public_path('storage/avatar/avatar' . '.*'));
+		$path = explode('public', $files[0]);
+		$avatar = $files ? asset($path[1]) : asset('images/avatar.png');
+		return view('tasks.show', ['task' => $task, 'avatar' =>$avatar]);
 	}
 
 	public function edit(Task $task)
 	{
+		$files = glob(public_path('storage/avatar/avatar' . '.*'));
+		$path = explode('public', $files[0]);
+		$avatar = $files ? asset($path[1]) : asset('images/avatar.png');
 		$data = [
 			'id'             => $task->id,
 			'name.en'        => $task->getTranslation('name', 'en'),
@@ -37,7 +48,7 @@ class TaskController extends Controller
 			'description.ka' => $task->getTranslation('description', 'ka'),
 			'due_date'       => Carbon::parse($task->due_date)->format('d/m/y'),
 		];
-		return view('tasks.edit', ['task' => $data]);
+		return view('tasks.edit', ['task' => $data, 'avatar' => $avatar]);
 	}
 
 	public function update(UpdateTaskRequest $request, Task $task): RedirectResponse
@@ -61,7 +72,11 @@ class TaskController extends Controller
 
 	public function create()
 	{
-		return view('tasks.create');
+		$files = glob(public_path('storage/avatar/avatar' . '.*'));
+		$path = explode('public', $files[0]);
+		$avatar = $files ? asset($path[1]) : asset('images/avatar.png');
+
+		return view('tasks.create', ['avatar'=>$avatar]);
 	}
 
 	public function store(CreateTaskRequest $request): RedirectResponse

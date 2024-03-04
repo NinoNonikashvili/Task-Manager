@@ -18,7 +18,7 @@
           />
     <label 
         for="{{$name.'_id'}}" 
-        class="absolute left-6 top-4  text-xs font-normal leading-4 text-gray-106 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-106 peer-placeholder-shown:top-7 peer-focus:top-4 peer-focus:text-gray-default peer-focus:text-xs ">{{$label}}</label>
+        class="absolute left-6 top-4  `text-xs font-normal leading-4 text-gray-106` transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-106 peer-placeholder-shown:top-7 peer-focus:top-4 peer-focus:text-gray-default peer-focus:text-xs ">{{$label}}</label>
         @error(trim(str_replace('[', '.', $name), ']'))
             <div class="text-xs font-normal text-red-error mt-1">{{ $message }}</div>
         @enderror

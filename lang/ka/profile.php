@@ -10,4 +10,5 @@ return [
 	'current_password'    => 'ახლანდელი პაროლი',
 	'new_password'        => 'ახალი პაროლი',
 	'retype_new_password' => 'გაიმეორე პაროლი',
+	'change'              => 'შეინახე',
 ];
