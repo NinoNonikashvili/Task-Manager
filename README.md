@@ -138,7 +138,7 @@ it will watch JS files and on change it'll rebuild them, so you don't have to ma
 #
 ### Resources
 
-* [Figma Design] (https://www.figma.com/file/HkL8NHL7914PBgdYb6D3zN/Laravel-Dev?type=design&node-id=32-3592&mode=design&t=lYo5IsAUs3tQT6ay-0)
+* [Figma Design](https://www.figma.com/file/HkL8NHL7914PBgdYb6D3zN/Laravel-Dev?type=design&node-id=32-3592&mode=design&t=lYo5IsAUs3tQT6ay-0)
 * DataBade Diagram
  <img src="/readme/drawSQL-image.png" width="600" style="position: relative; top: 4px" /> 
 
