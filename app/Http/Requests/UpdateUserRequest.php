@@ -19,10 +19,15 @@ class UpdateUserRequest extends FormRequest
 				'current_password'       => 'required|current_password:web',
 				'new_password'           => 'required|min:4',
 				'duplicate_password'     => 'required|same:new_password',
+				'avatar'                 => 'image',
+				'cover'                  => 'image',
 			];
 		}
 
 		// If none of the fields have a value, don't validate any of them
-		return [];
+		return [
+			'avatar'                 => 'image',
+			'cover'                  => 'image',
+		];
 	}
 }
