@@ -34,8 +34,10 @@ class UserController extends Controller
 			}
 			$request->file('cover')->store('cover');
 		}
-		$user->password = bcrypt($request['new_password']);
-		$user->save();
+		if (!empty($request['new_password'])) {
+			$user->password = bcrypt($request['new_password']);
+			$user->save();
+		}
 
 		return redirect(route('dashboard'));
 	}

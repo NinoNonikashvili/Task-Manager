@@ -14,8 +14,8 @@
                     <div class="w-115" >
                         <x-form.input-disabled type="email" name="email" placeholder="" label="{{__('tasks.email')}}"  value="{{$user['email']}}" />
                         <h3 class="mb-6 mt-16 flex justify-center uppercase text-base font-normal leading-4 text-gray-default">{{__('profile.change_password')}}</h3>
-                        <x-form.password-input type="password" name="current_pass" placeholder=""  label="{{__('profile.current_password')}}" value="{{old('current_pass')}}"/>
-                        <x-form.password-input type="password" name="new_password" placeholder=""  label="{{__('profile.new_password')}}" value="{{old('new_password')}}"/>
+                        <x-form.password-input type="password" name="current_password" placeholder=""  label="{{__('profile.current_password')}}" />
+                        <x-form.password-input type="password" name="new_password" placeholder=""  label="{{__('profile.new_password')}}" />
                         <x-form.password-input type="password" name="duplicate_password" placeholder=""  label="{{__('profile.retype_new_password')}}" value="{{old('duplicate_password')}}"/>
                     </div>
                     <div class="w-115">
