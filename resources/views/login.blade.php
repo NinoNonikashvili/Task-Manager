@@ -17,7 +17,7 @@
                     @csrf
                  
                     <x-form.input type="email" name="email" placeholder="{{__('login.write_email')}}"  label="{{__('login.email')}}" value="{{old('email')}}"/>
-                    <x-form.password-input name="password" placeholder="{{__('login.write_password')}}" label="{{__('login.password')}}" value="{{old('password')}}"/>
+                    <x-form.password-input name="password" placeholder="{{__('login.write_password')}}" label="{{__('login.password')}}" />
                     
                     <div class="mb-6 w-full">
                         <!-- <button class="w-full px-6 py-4 rounded-xl bg-blue-500 text-base font-bold leading-4 text-white focus:outline-none">

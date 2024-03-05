@@ -1,4 +1,4 @@
-@props(['user', 'avatar'])
+@props(['user', 'avatar', 'cover'])
 <x-layout>
    
     <main class="flex gap-20 h-full">
@@ -22,8 +22,8 @@
                         <h3 class="mb-6 mt-16 flex justify-center uppercase text-base font-normal leading-4 text-gray-default">{{__('profile.change_photos')}}</h3>
                     </div>
                     <div class="w-full mb-12">
-                        <x-form.input-image name="avatar" text="{{__('profile.upload_profile')}}" />
-                        <x-form.input-image name="cover" text="{{__('profile.upload_cover')}}" />
+                        <x-form.input-image name="avatar" text="{{__('profile.upload_profile')}}" value="{{old('value')}}" :image_path="$avatar" />
+                        <x-form.input-image name="cover" text="{{__('profile.upload_cover')}}" value="{{old('value')}}" :image_path="$cover"/>
                     </div>
                     
                     
