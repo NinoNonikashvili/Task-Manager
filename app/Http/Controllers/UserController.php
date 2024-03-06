@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -15,23 +16,22 @@ class UserController extends Controller
 		return view('profile.edit', ['user' => auth()->user(), 'avatar'=>$avatar, 'cover'=>$cover]);
 	}
 
-	public function update(UpdateUserRequest $request)
+	public function update(UpdateUserRequest $request): RedirectResponse
 	{
 		$user = User::find(auth()->id());
 		if (!empty($request['avatar'])) {
-			if (!Storage::disk()->exists('avatar/user-' . $user->id)) {
-				Storage::disk()->makeDirectory('avatar/user-' . $user->id);
-			} else {
+			if (Storage::disk()->exists('avatar/user-' . $user->id)) {
 				Storage::disk()->deleteDirectory('avatar/user-' . $user->id);
 			}
+			Storage::disk()->makeDirectory('avatar/user-' . $user->id);
 			$user->avatar = $request->file('avatar')->store('avatar/user-' . $user->id);
+			$user->save();
 		}
 		if (!empty($request['cover'])) {
-			if (!Storage::disk()->exists('cover')) {
-				Storage::disk()->makeDirectory('cover');
-			} else {
+			if (Storage::disk()->exists('cover')) {
 				Storage::disk()->deleteDirectory('cover');
 			}
+			Storage::disk()->makeDirectory('cover');
 			$request->file('cover')->store('cover');
 		}
 		if (!empty($request['new_password'])) {
