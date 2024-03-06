@@ -10,28 +10,41 @@ class UserController extends Controller
 {
 	public function edit()
 	{
-		$user = auth()->user();
-		$files = glob(public_path('storage/avatar/avatar' . '.*'));
-		$path = explode('public', $files[0]);
-		$avatar = $files ? asset($path[1]) : asset('images/avatar.png');
-		return view('profile.edit', ['user' => $user, 'avatar'=>$avatar]);
+		$avatar = $this::retrieveUserAvatar();
+		$cover = LoginController::retrieveCover();
+		return view('profile.edit', ['user' => auth()->user(), 'avatar'=>$avatar, 'cover'=>$cover]);
 	}
 
 	public function update(UpdateUserRequest $request)
 	{
 		$user = User::find(auth()->id());
 		if (!empty($request['avatar'])) {
-			Storage::disk()->deleteDirectory('avatar');
-			$user->avatar = $request->file('avatar')->storeAs('avatar', 'avatar.' . $request->file('avatar')->extension());
+			if (!Storage::disk()->exists('avatar/user-' . $user->id)) {
+				Storage::disk()->makeDirectory('avatar/user-' . $user->id);
+			} else {
+				Storage::disk()->deleteDirectory('avatar/user-' . $user->id);
+			}
+			$user->avatar = $request->file('avatar')->store('avatar/user-' . $user->id);
 		}
 		if (!empty($request['cover'])) {
-			Storage::disk()->deleteDirectory('cover');
-			$user->cover = $request->file('cover')->storeAs('cover', 'cover.' . $request->file('cover')->extension());
+			if (!Storage::disk()->exists('cover')) {
+				Storage::disk()->makeDirectory('cover');
+			} else {
+				Storage::disk()->deleteDirectory('cover');
+			}
+			$request->file('cover')->store('cover');
+		}
+		if (!empty($request['new_password'])) {
+			$user->password = bcrypt($request['new_password']);
+			$user->save();
 		}
 
-		$user->password = bcrypt($request['new_password']);
-		$user->save();
-
 		return redirect(route('dashboard'));
+	}
+
+	public static function retrieveUserAvatar(): String
+	{
+		$path = auth()->user()->avatar ? 'storage/' . auth()->user()->avatar : 'images/avatar.png';
+		return asset($path);
 	}
 }

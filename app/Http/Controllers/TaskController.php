@@ -16,11 +16,7 @@ class TaskController extends Controller
 		$column = $request['column'] ?? 'created_at';
 		$sort = $request['sort'] ?? 'desc';
 		$now = Carbon::now();
-
-		$files = glob(public_path('storage/avatar/avatar' . '.*'));
-		$path = explode('public', $files[0]);
-		$avatar = $files ? asset($path[1]) : asset('images/avatar.png');
-
+		$avatar = UserController::retrieveUserAvatar();
 		if ($request['due_tasks']) {
 			return view('dashboard', ['tasks' => $tasks::orderBy($column, $sort)->whereDate('due_date', '<', $now)->paginate(8)->appends(request()->query()), 'avatar' =>$avatar]);
 		}
@@ -29,17 +25,12 @@ class TaskController extends Controller
 
 	public function show(Task $task)
 	{
-		$files = glob(public_path('storage/avatar/avatar' . '.*'));
-		$path = explode('public', $files[0]);
-		$avatar = $files ? asset($path[1]) : asset('images/avatar.png');
+		$avatar = UserController::retrieveUserAvatar();
 		return view('tasks.show', ['task' => $task, 'avatar' =>$avatar]);
 	}
 
 	public function edit(Task $task)
 	{
-		$files = glob(public_path('storage/avatar/avatar' . '.*'));
-		$path = explode('public', $files[0]);
-		$avatar = $files ? asset($path[1]) : asset('images/avatar.png');
 		$data = [
 			'id'             => $task->id,
 			'name.en'        => $task->getTranslation('name', 'en'),
@@ -48,6 +39,7 @@ class TaskController extends Controller
 			'description.ka' => $task->getTranslation('description', 'ka'),
 			'due_date'       => Carbon::parse($task->due_date)->format('d/m/y'),
 		];
+		$avatar = UserController::retrieveUserAvatar();
 		return view('tasks.edit', ['task' => $data, 'avatar' => $avatar]);
 	}
 
@@ -72,10 +64,7 @@ class TaskController extends Controller
 
 	public function create()
 	{
-		$files = glob(public_path('storage/avatar/avatar' . '.*'));
-		$path = explode('public', $files[0]);
-		$avatar = $files ? asset($path[1]) : asset('images/avatar.png');
-
+		$avatar = UserController::retrieveUserAvatar();
 		return view('tasks.create', ['avatar'=>$avatar]);
 	}
 

@@ -1,4 +1,4 @@
-@props([ 'name', 'placeholder', 'label', 'value'])
+@props([ 'name', 'placeholder', 'label'])
 
 
 <div
@@ -12,7 +12,7 @@
          name="{{$name}}" 
          x-bind:type="show ? 'text' : 'password'"
          placeholder="{{$placeholder}}"
-         value="{{$value}}"
+         
          class="peer w-full h-full pt-4 overflow-hidden text-base font-normal leading-4 text-gray-default  bg-gray-103  focus:outline-none  placeholder-transparent focus:placeholder-gray-104" 
           />
     <label 
