@@ -47,7 +47,7 @@ class TaskController extends Controller
 	{
 		$data = $request->validated();
 
-		$date = Carbon::createFromFormat('d/m/y', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
+		$date = Carbon::createFromFormat('Y-m-d', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
 
 		$task->replaceTranslations('name', $data['name']);
 		$task->replaceTranslations('description', $data['description']);
@@ -72,7 +72,7 @@ class TaskController extends Controller
 	{
 		$data = $request->validated();
 
-		$date = Carbon::createFromFormat('d/m/y', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
+		$date = Carbon::createFromFormat('Y-m-d', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
 
 		$data['due_date'] = $date;
 		$data['user_id'] = auth()->id();

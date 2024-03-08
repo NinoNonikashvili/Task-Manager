@@ -18,7 +18,7 @@ class UpdateTaskRequest extends FormRequest
 			'name.ka'        => 'required|min:3|regex:/^[ა-ჰ\s]+$/',
 			'description.en' => 'required|min:3|regex:/^[a-zA-Z\s]+$/',
 			'description.ka' => 'required|min:3|regex:/^[ა-ჰ\s]+$/',
-			'due_date'       => 'required|date_format:d/m/y',
+			'due_date'       => 'required',
 		];
 	}
 }
