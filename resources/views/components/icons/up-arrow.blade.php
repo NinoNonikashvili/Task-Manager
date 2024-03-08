@@ -1,5 +1,8 @@
 @props(['column'])
 
 <a href="/?column={{$column}}&sort=asc&{{http_build_query(request()->except(['column', 'sort']))}}">
-<svg width="12px" height="13px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/></svg>
+
+<svg width="12px" height="13px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10.16 8.84" style="max-height: 500px" width="10.16" height="8.84">
+<path fill="black" d="M9.37478 11.4194C9.88806 11.3288 10.0851 11.6163 9.81652 12.0586L5.45626 19.2402C5.18695 19.6838 4.74952 19.6825 4.48099 19.2402L0.120734 12.0586C-0.14858 11.615 0.0473274 11.3285 0.562476 11.4194L4.03925 12.033C4.55253 12.1236 5.38286 12.1239 5.89801 12.033L9.37478 11.4194ZM0.562476 8.58057C0.049194 8.67115 -0.147797 8.3837 0.120734 7.94141L4.48099 0.759811C4.75031 0.316234 5.18773 0.317525 5.45626 0.759811L9.81652 7.94141C10.0858 8.38499 9.88993 8.67148 9.37478 8.58057L5.89801 7.96702C5.38472 7.87644 4.5544 7.87611 4.03925 7.96702L0.562476 8.58057Z" clip-rule="evenodd" fill-rule="evenodd"/>
+</svg>
 </a>
