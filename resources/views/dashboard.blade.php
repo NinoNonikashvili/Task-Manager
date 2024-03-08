@@ -17,10 +17,12 @@
                     </a>
                 </div>
             </header>
-            <div class="grow px-4 mt-4 h-2/3">
+            <div class="grow px-4 mt-4 h-2/3 flex flex-col justify-between">
                 <!-- table start -->
+
+                
                 @if(count($tasks)) 
-                <table class="min-w-full divide-y divide-gray-200">
+                <table class="min-w-full h-fit divide-y divide-gray-200">
                     <thead >
                         <tr>
                             <th scope="col" class="pl-6 py-8 max-w-[18rem] overflow-hidden whitespace-nowrap text-left text-lg font-medium text-black">{{__('dashboard.task_name')}}</th>
@@ -55,7 +57,6 @@
                 </table>
                 {{$tasks->links()}}
                 @endif
-
                 <!-- table end -->
             </div>
             <x-lan-switcher  />
