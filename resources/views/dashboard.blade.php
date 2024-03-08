@@ -10,10 +10,10 @@
                 <div class="flex gap-4 align-center">
                     <form action="{{route('task.destroy_all')}}" method="post" novalidate>
                         @csrf
-                        <x-btn-outline text="{{__('dashboard.delete_old_tasks')}}"  type='submit' height="h-full"/>
+                        <x-btn-outline text="{{__('dashboard.delete_old_tasks')}}"  type='submit' height="h-full" py="py-4"/>
                     </form>
                     <a href="{{route('task.create')}}">
-                        <x-btn-filled text="{{__('dashboard.add_task')}}" icon="icons.add-task " />
+                        <x-btn-filled text="{{__('dashboard.add_task')}}" icon="icons.add-task " py="py-4" />
                     </a>
                 </div>
             </header>

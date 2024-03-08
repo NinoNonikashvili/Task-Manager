@@ -5,10 +5,10 @@
 
     <x-admin-section :avatar="$avatar" />
 
-        <section class="w-570 mt-14 ml-auto">
+        <section class="w-570 mt-14 ml-auto ">
 
                 <h1 class="mb-8 w-115 text-center uppercase text-3xl font-bold leading-4 text-gray-900">{{__('profile.profile')}}</h1>
-                <form action="{{route('proile.update')}}" method="post" enctype="multipart/form-data" novalidate class="w-full">
+                <form action="{{route('proile.update')}}" method="post" enctype="multipart/form-data" novalidate class="w-full" >
                     @csrf
                     @method('patch')
                     <div class="w-115" >
@@ -31,9 +31,8 @@
                     
                  
                     <div class="mb-6 w-115">
-                        <button type="submit" class="w-full px-6 py-4 rounded-xl bg-blue-500 text-base font-bold leading-4 text-white focus:outline-none uppercase" type="submit">
-                        {{__('profile.change')}}
-                        </button>
+                        
+                        <x-btn-filled text="{{__('profile.change')}}" type="submit" py="py-27"/>
                     </div>
                     
                    
