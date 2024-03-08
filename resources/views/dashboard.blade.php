@@ -6,7 +6,7 @@
         <x-admin-section :avatar="$avatar" />
         <section class="grow mt-24 flex flex-col">
             <header class="flex justify-between items-end">
-                <h1 class="ml-10 text-3xl font-bold leading-4  text-gray-900">{{__('dashboard.your_tasks')}}</h1>
+                <h1 class="ml-10 text-3xl font-bold leading-4  text-gray-900 uppercase ">{{__('dashboard.your_tasks')}}</h1>
                 <div class="flex gap-4 align-center">
                     <form action="{{route('task.destroy_all')}}" method="post" novalidate>
                         @csrf

@@ -61,6 +61,9 @@ export default {
         blue: {
           '104': '#499AF9'
         },
+      },
+      fontFamily: {
+        helvetica: ['helvetica']
       }
     }
     },
