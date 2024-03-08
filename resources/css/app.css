@@ -3,3 +3,11 @@
 @tailwind utilities;
 @tailwind variants;
 
+.custom-datepicker::-webkit-calendar-picker-indicator{
+    width:30px;
+    height:40px;
+    cursor: pointer;
+
+}
+
+
