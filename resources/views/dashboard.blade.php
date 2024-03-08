@@ -26,7 +26,7 @@
                             <th scope="col" class="pl-6 py-8 max-w-[18rem] overflow-hidden whitespace-nowrap text-left text-lg font-medium text-black">{{__('dashboard.task_name')}}</th>
                             <th scope="col" class="pl-6 py-8 max-w-[21rem] overflow-hidden whitespace-nowrap text-left text-lg font-medium text-black">{{__('dashboard.description')}}</th>
                             <th scope="col" class="pl-6 py-8 max-w-[8rem] overflow-hidden whitespace-nowrap">
-                                <div class="flex gap-1">
+                                <div class="flex gap-2">
                                     <span class="text-left text-lg font-medium text-black">{{__('dashboard.created_at')}}</span>
                                     <x-date-filter column="created_at" />
                                 </div>
