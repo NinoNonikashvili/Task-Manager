@@ -53,7 +53,7 @@ class TaskController extends Controller
 		$task->replaceTranslations('description', $data['description']);
 
 		$task->update(['due_date'=>$date]);
-		return redirect(route('dashboard'));
+		return redirect(route('dashboard'))->with('success', __('tasks.task_updated_successfully'));
 	}
 
 	public function destroy(Request $request): RedirectResponse
@@ -81,7 +81,7 @@ class TaskController extends Controller
 
 		$task->save();
 
-		return redirect(route('dashboard'));
+		return redirect(route('dashboard'))->with('success', __('tasks.task_created_successfully'));
 	}
 
 	public function destroyOld(Request $request): RedirectResponse

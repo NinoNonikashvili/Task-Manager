@@ -23,6 +23,9 @@
                 </div>
             </div>
             <x-lan-switcher  />
+            @if(session('success'))
+                <x-success-popup :message="{{session('success')}}"/>
+            @endif
         </section>
     </main>
 </x-layout>
