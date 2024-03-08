@@ -3,8 +3,8 @@
 <div class="mb-8">
     <div class="flex gap-5 items-center w-full mb-8" x-data="{ imageSrc: '{{$image_path}}'}">
             
-        <img x-bind:src="imageSrc" alt="Uploaded Photo" class="w-124" >        
-        <div class="relative w-436 h-19 px-6 rounded-xl bg-gray-103  focus-within:ring-1 focus-within:ring-blue-104 @error($name) ring-1 ring-red-error @enderror">
+        <img x-bind:src="imageSrc" alt="Uploaded Photo" class="w-124 flex-shrink-0" >        
+        <div class="relative w-436 h-19 px-6 rounded-xl bg-white border border-blue-104  @error($name) ring-1 ring-red-error @enderror">
         
             <input 
             name="{{$name}}" 
@@ -14,10 +14,11 @@
             value={{$value}}
             
             />
-            <button class="w-full h-full flex items-center justify-center gap-2 " >
+            <x-btn-outline  width="w-272">
                 <x-icons.upload />
                 <span class="text-base font-bold leading-4 text-blue-104 uppercase ">{{$text}}</span>
-            </button>
+            </x-btn-outline>
+                
 
         </div>
         <button 
