@@ -43,7 +43,7 @@
                         </tr>
                     </thead>
                    
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tbody class="bg-white">
                         @foreach($tasks as $task)
                         <x-table-data-row :task="$task"/>
 
