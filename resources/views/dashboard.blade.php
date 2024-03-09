@@ -17,16 +17,18 @@
                     </a>
                 </div>
             </header>
-            <div class="grow px-4 mt-4 h-2/3">
+            <div class="grow px-4 mt-4 h-2/3 flex flex-col justify-between">
                 <!-- table start -->
+
+                
                 @if(count($tasks)) 
-                <table class="min-w-full divide-y divide-gray-200">
+                <table class="min-w-full h-fit divide-y divide-gray-200">
                     <thead >
                         <tr>
                             <th scope="col" class="pl-6 py-8 max-w-[18rem] overflow-hidden whitespace-nowrap text-left text-lg font-medium text-black">{{__('dashboard.task_name')}}</th>
                             <th scope="col" class="pl-6 py-8 max-w-[21rem] overflow-hidden whitespace-nowrap text-left text-lg font-medium text-black">{{__('dashboard.description')}}</th>
                             <th scope="col" class="pl-6 py-8 max-w-[8rem] overflow-hidden whitespace-nowrap">
-                                <div class="flex gap-1">
+                                <div class="flex gap-2">
                                     <span class="text-left text-lg font-medium text-black">{{__('dashboard.created_at')}}</span>
                                     <x-date-filter column="created_at" />
                                 </div>
@@ -43,7 +45,7 @@
                         </tr>
                     </thead>
                    
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tbody class="bg-white">
                         @foreach($tasks as $task)
                         <x-table-data-row :task="$task"/>
 
@@ -55,7 +57,6 @@
                 </table>
                 {{$tasks->links()}}
                 @endif
-
                 <!-- table end -->
             </div>
             <x-lan-switcher  />
