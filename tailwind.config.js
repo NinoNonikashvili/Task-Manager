@@ -43,6 +43,8 @@ export default {
           '368' : '23rem',
           '436' : '27.25rem',
           '124' : '7.75rem',
+          '336' : '21rem',
+          '106' : '6.625rem'
           '27'  : '1.6875rem'
         },
       
@@ -62,6 +64,9 @@ export default {
         blue: {
           '104': '#499AF9'
         },
+        green: {
+          '101' : '#4ABF4E'
+        }
       },
       fontFamily: {
         helvetica: ['helvetica']
