@@ -14,6 +14,7 @@ class CreateTaskRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
+
 			'name.en'        => 'required|min:3|regex:/^[a-zA-Z0-9.,!?"()@$%:*\-\s]+$/',
 			'name.ka'        => 'required|min:3|regex:/^[ა-ჰ0-9.,!?"()@$%:*\-\s]+$/',
 			'description.en' => 'required|min:3|regex:/^[a-zA-Z0-9.,!?"()@$%:*\-\s]+$/',

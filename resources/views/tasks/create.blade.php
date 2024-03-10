@@ -16,7 +16,7 @@
                     <x-form.textarea name="description[en]" placeholder=""  label="{{__('tasks.task_description_en')}}" value="{{old('description.en')}}" />
                     <x-form.textarea name="description[ka]" placeholder=""  label="{{__('tasks.task_description_ka')}}" value="{{old('description.ka')}}" />
                     
-                    <x-form.input type="text" name="due_date" placeholder="DD/MM/YY" label="{{__('tasks.due_date')}}" value="{{old('due_date')}}"/>
+                    <x-form.input-date name="due_date" placeholder="DD/MM/YY" label="{{__('tasks.due_date')}}" value="{{old('due_date')}}"/>
                  
                     <div class="mb-6 w-full">
                       
