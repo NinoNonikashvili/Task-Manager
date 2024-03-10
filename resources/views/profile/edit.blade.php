@@ -7,8 +7,10 @@
 
         <section class="w-570 mt-14 ml-auto ">
 
-                <h1 class="mb-8 w-115 text-center uppercase text-3xl font-bold leading-4 text-gray-900">{{__('profile.profile')}}</h1>
-                <form action="{{route('proile.update')}}" method="post" enctype="multipart/form-data" novalidate class="w-full" >
+
+                <h1 class="mb-8 w-115 text-center  text-3xl font-bold leading-4 text-gray-900 uppercase">{{__('profile.profile')}}</h1>
+                <form action="{{route('proile.update')}}" method="post" enctype="multipart/form-data" novalidate class="w-full">
+
                     @csrf
                     @method('patch')
                     <div class="w-115" >
