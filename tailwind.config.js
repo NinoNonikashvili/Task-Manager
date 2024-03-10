@@ -42,7 +42,8 @@ export default {
           '570' : '35rem',
           '368' : '23rem',
           '436' : '27.25rem',
-          '124' : '7.75rem'
+          '124' : '7.75rem',
+          '27'  : '1.6875rem'
         },
       
       colors: {
@@ -61,6 +62,9 @@ export default {
         blue: {
           '104': '#499AF9'
         },
+      },
+      fontFamily: {
+        helvetica: ['helvetica']
       }
     }
     },

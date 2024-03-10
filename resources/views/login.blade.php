@@ -23,7 +23,7 @@
                         <!-- <button class="w-full px-6 py-4 rounded-xl bg-blue-500 text-base font-bold leading-4 text-white focus:outline-none">
                         
                         </button> -->
-                        <x-btn-filled text="{{__('login.login')}}" type="submit"/>
+                        <x-btn-filled text="{{__('login.login')}}" type="submit" py="py-27"/>
                     </div>
                 </form>
             </div>         

@@ -13,7 +13,7 @@
         <title>Task Manager</title>
 
     </head>
-    <body class="p-10 h-screen">
+    <body class="p-10 h-screen parent-element font-helvetica">
         {{ $slot}}
     </body>
 
