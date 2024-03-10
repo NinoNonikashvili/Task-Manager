@@ -39,7 +39,7 @@ class UserController extends Controller
 			$user->save();
 		}
 
-		return redirect(route('dashboard'));
+		return redirect(route('dashboard'))->with('success', __('profile.profile_updated_successfully'));
 	}
 
 	public static function retrieveUserAvatar(): String
