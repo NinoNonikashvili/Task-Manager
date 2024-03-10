@@ -1,8 +1,9 @@
 @props(['avatar'])
 
 
-<section class="flex flex-col items-center p-6 bg-gray-103 rounded-4 h-full w-[10.5rem] rounded-xl flex-shrink-0">
-    <img src="{{$avatar}}" alt="" class="mb-28 rounded-full w-16">
+<section class="flex flex-col items-center p-6 bg-gray-200 rounded-4 h-full w-[10.5rem] rounded-xl flex-shrink-0">
+    <img src="{{$avatar}}" alt="" class="mb-28 rounded-full w-16 h-16 object-cover">
+
     <ul class="flex flex-col gap-7">
         <li>
             <a href="{{route('dashboard')}}">
