@@ -45,6 +45,7 @@ export default {
           '124' : '7.75rem',
           '336' : '21rem',
           '106' : '6.625rem'
+          '27'  : '1.6875rem'
         },
       
       colors: {
@@ -66,6 +67,9 @@ export default {
         green: {
           '101' : '#4ABF4E'
         }
+      },
+      fontFamily: {
+        helvetica: ['helvetica']
       }
     }
     },

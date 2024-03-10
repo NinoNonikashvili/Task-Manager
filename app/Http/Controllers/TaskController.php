@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Task;
@@ -17,10 +18,18 @@ class TaskController extends Controller
 		$sort = $request['sort'] ?? 'desc';
 		$now = Carbon::now();
 		$avatar = UserController::retrieveUserAvatar();
+
+		$taskQuery = $tasks::orderBy($column, $sort);
 		if ($request['due_tasks']) {
-			return view('dashboard', ['tasks' => $tasks::orderBy($column, $sort)->whereDate('due_date', '<', $now)->paginate(8)->appends(request()->query()), 'avatar' =>$avatar]);
+			$taskQuery->whereDate('due_date', '<', $now);
 		}
-		return view('dashboard', ['tasks' => $tasks::orderBy($column, $sort)->paginate(8)->appends(request()->query()), 'avatar' =>$avatar]);
+		$tasks = $taskQuery->paginate(8)->appends(request()->query());
+
+		if (count($tasks) === 0 && $tasks->currentPage() > 1) {
+			return Redirect::to($tasks->previousPageUrl());
+		}
+
+		return view('dashboard', ['tasks' => $tasks, 'avatar' =>$avatar]);
 	}
 
 	public function show(Task $task)
@@ -47,7 +56,7 @@ class TaskController extends Controller
 	{
 		$data = $request->validated();
 
-		$date = Carbon::createFromFormat('d/m/y', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
+		$date = Carbon::createFromFormat('Y-m-d', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
 
 		$task->replaceTranslations('name', $data['name']);
 		$task->replaceTranslations('description', $data['description']);
@@ -59,6 +68,7 @@ class TaskController extends Controller
 	public function destroy(Request $request): RedirectResponse
 	{
 		Task::find($request['id'])->delete();
+
 		return redirect()->back();
 	}
 
@@ -72,7 +82,7 @@ class TaskController extends Controller
 	{
 		$data = $request->validated();
 
-		$date = Carbon::createFromFormat('d/m/y', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
+		$date = Carbon::createFromFormat('Y-m-d', $data['due_date'])->setTime(0, 0, 0)->format('Y-m-d H:i:s');
 
 		$data['due_date'] = $date;
 		$data['user_id'] = auth()->id();

@@ -21,12 +21,10 @@
                     <x-form.textarea name="description[en]" placeholder=""  label="{{__('tasks.task_description_en')}}" value="{{old('description.en')??$task['description.en']}}" />
                     <x-form.textarea name="description[ka]" placeholder=""  label="{{__('tasks.task_description_ka')}}" value="{{old('description.ka')??$task['description.ka']}}" />
                     
-                    <x-form.input type="text" name="due_date" placeholder="DD/MM/YY" label="{{__('tasks.due_date')}}" value="{{old('due_date')??$task['due_date']}}"/>
-                 
+                    <x-form.input-date name="due_date" placeholder="DD/MM/YY" label="{{__('tasks.due_date')}}" value="{{old('due_date')??$task['due_date']}}"/>
                     <div class="mb-6 w-full">
-                        <button type="submit" class="w-full px-6 py-4 rounded-xl bg-blue-500 text-base font-bold leading-4 text-white focus:outline-none uppercase" type="submit">
-                        {{__('tasks.edit_changes')}}
-                        </button>
+                        
+                        <x-btn-filled text="{{__('tasks.edit_changes')}}" type="submit" py="py-27"/>
                     </div>
                     
                    

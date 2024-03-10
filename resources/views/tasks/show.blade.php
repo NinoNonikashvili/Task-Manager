@@ -9,7 +9,7 @@
             <header class="flex justify-between items-end">
                 <h1 class="text-3xl font-bold leading-4  text-gray-900">{{$task->name}}</h1>
                 <a href="/edit/{{$task->id}}">
-                    <x-btn-outline text="{{__('tasks.edit_task')}}" icon="icons.edit " />
+                    <x-btn-outline text="{{__('tasks.edit_task')}}" icon="icons.edit " py="py-4"/>
                 </a>
             </header>
             <div class="grow mt-10 h-2/3">
