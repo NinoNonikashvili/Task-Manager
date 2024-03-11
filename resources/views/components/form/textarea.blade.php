@@ -14,7 +14,7 @@
             {{$label}}
         </label>
         @error(trim(str_replace('[', '.', $name), ']'))
-            <div class="text-xs font-normal text-red-error mt-1">{{ $message }}</div>
+            <div class="text-xs font-normal text-red-error mt-3">{{ $message }}</div>
         @enderror
 </div>
 
