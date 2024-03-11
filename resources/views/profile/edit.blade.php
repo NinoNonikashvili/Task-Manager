@@ -5,7 +5,7 @@
 
     <x-admin-section :avatar="$avatar" />
 
-        <section class="w-570 mt-14 ml-auto ">
+        <section class="w-fit mt-14 mx-auto ">
 
 
                 <h1 class="mb-8 w-115 text-center  text-3xl font-bold leading-4 text-gray-900 uppercase">{{__('profile.profile')}}</h1>

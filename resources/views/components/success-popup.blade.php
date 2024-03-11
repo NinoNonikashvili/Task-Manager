@@ -6,4 +6,4 @@
         <x-icons.success-smile class="success-smile" />
         <p class="text-base leading-5 text-black font-normal">{{$message}}</p>
     </div>
-<</div>
+</div>
