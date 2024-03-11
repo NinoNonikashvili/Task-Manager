@@ -8,7 +8,7 @@
  
             <div class="w-115 mt-4 mx-auto flex flex-col items-center">
                 <h1 class="mb-8 text-3xl font-bold leading-4 text-gray-900">{{__('tasks.create_task')}}</h1>
-                <form action="{{route('task.store')}}" method="post" novalidate class="w-full">
+                <form action="{{route('task.store')}}" method="post" novalidate class="w-462">
                     @csrf
                     <x-form.input type="text" name="name[en]" placeholder="" label="{{__('tasks.task_name_en')}}"  value="{{old('name.en')}}"/>
                     <x-form.input type="text" name="name[ka]" placeholder=""  label="{{__('tasks.task_name_ka')}}" value="{{old('name.ka')}}"/>
@@ -18,7 +18,7 @@
                     
                     <x-form.input-date name="due_date" placeholder="DD/MM/YY" label="{{__('tasks.due_date')}}" value="{{old('due_date')}}"/>
                  
-                    <div class="mb-6 w-full">
+                    <div class="mb-6 w-462">
                       
                         <x-btn-filled text="{{__('tasks.create_task')}}" type="submit" py="py-27"/>
                     </div>

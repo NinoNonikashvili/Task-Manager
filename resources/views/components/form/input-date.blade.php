@@ -1,8 +1,8 @@
 @props([ 'name', 'placeholder', 'label', 'value'])
 
-
+<div class="mb-8">
 <div 
-    class=" relative w-full h-19 mb-8 px-6 rounded-xl bg-gray-103 focus-within:ring-1 focus-within:ring-blue-104 @error(trim(str_replace('[', '.', $name), ']')) ring-1 ring-red-error @enderror"
+    class=" relative w-full h-19  px-6 rounded-xl bg-gray-103 focus-within:ring-1 focus-within:ring-blue-104 @error(trim(str_replace('[', '.', $name), ']')) ring-1 ring-red-error @enderror"
     x-data="{ text: '{{$value}}' }"
     x-on:click="text = text === '' ? 'DD/MM/YY' : text">
 
@@ -25,10 +25,10 @@
     </div>
 </div>
 
-</div>
         @error(trim(str_replace('[', '.', $name), ']'))
-            <div class="text-xs font-normal text-red-error mt-1">{{ $message }}</div>
+            <div class="text-xs font-normal text-red-error mt-2">{{ $message }}</div>
         @enderror
+        </div>
 <script>
     function formatDate(dateString) {
         if (!dateString) return '';
@@ -43,6 +43,8 @@
         }
         return `${month}/${day}/${year}`;
     }
+
+    
 
     Alpine.data('formatDate', formatDate);
 </script>
