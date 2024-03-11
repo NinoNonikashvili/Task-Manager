@@ -36,8 +36,4 @@
     @enderror
     </div>
 
-    <script>
-        document.getElementById('avatar').addEventListener('click', (e)=> {
-            console.log(e.target.value)
-        })  
-    </script>
+    
