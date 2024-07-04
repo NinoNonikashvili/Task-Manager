@@ -20,10 +20,11 @@ class TaskController extends Controller
 		$avatar = UserController::retrieveUserAvatar();
 
 		$taskQuery = $tasks::orderBy($column, $sort);
+
 		if ($request['due_tasks']) {
 			$taskQuery->whereDate('due_date', '<', $now);
 		}
-		$tasks = $taskQuery->paginate(8)->appends(request()->query());
+		$tasks = $taskQuery->where('user_id', auth()->id())->paginate(8)->appends(request()->query());
 
 		if (count($tasks) === 0 && $tasks->currentPage() > 1) {
 			return Redirect::to($tasks->previousPageUrl());
